@@ -111,4 +111,3 @@
       }
 ?>
 
-Distintas funciones de la agenda de amigos
