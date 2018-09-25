@@ -1,16 +1,15 @@
 <?php
-   /* funci髇 que muestra las cabeceras para que
+   /* funci贸n que muestra las cabeceras para que
       se llamado desde array_walk                */
    function escribir_cabeceras_walk ($mimatriz)
       {
       echo "<TR>\n";
       while (list($clave) = each($mimatriz))
          echo "<TH>$clave</TH>\n";
-      echo "<TH>N鷐ero de Ficha</TH>\n";
+      echo "<TH>N煤mero de Ficha</TH>\n";
       echo "</TR>\n";
       }
-
-   /* funci髇 que muestra los elementos de una matriz
+   /* funci贸n que muestra los elementos de una matriz
       para que se llamado desde array_walk            */
    function listar_elemento_walk($matriz, $clave_matriz)
       {
@@ -21,8 +20,7 @@
       echo "<TD ALIGN=CENTER>$clave_matriz</TD>\n";
       echo "</TR>\n";
       }
-
-   /* funci髇 que mediante la funci髇 array_walk muestra
+   /* funci贸n que mediante la funci贸n array_walk muestra
       el contenido de una matriz                         */
    function listar_walk($agenda, $texto)
       {
@@ -32,13 +30,11 @@
       array_walk($agenda, 'listar_elemento_walk');
       echo "</TABLE>\n";
       }
-
-   /* funci髇 que almacena el contenido de una matriz
+   /* funci贸n que almacena el contenido de una matriz
       en un fichero                                   */
    function grabar($mimatriz)
       {
       $fichero = fopen('datosagenda.dat', 'w');
-
       // Recorro los elementos de la matriz.
       // Es una matriz indexada
       for ($i = 0; $i < count($mimatriz); $i++)
@@ -51,8 +47,7 @@
          }
       fclose ($fichero);
       }
-
-   // funci髇 que lee de un fichero y almacen su contenido
+   // funci贸n que lee de un fichero y almacen su contenido
    // en una matriz
    function leer_agenda(&$agenda, $nombrefichero)
       {
@@ -67,8 +62,7 @@
                             'email' => $datosamigo[ 3 ]);
          }
       }
-
-   // Funci髇 que lista las claves de una matriz asociativa
+   // Funci贸n que lista las claves de una matriz asociativa
    function escribir_cabeceras ($mimatriz)
       {
       echo "<TR>\n";
@@ -76,8 +70,7 @@
          echo "<TH>$clave</TH>\n";
       echo "</TR>\n";
       }
-
-   // Funci髇 que lista las claves de una la agenda de amigos
+   // Funci贸n que lista las claves de una la agenda de amigos
    function listar ($mimatriz, $texto)
       {
       // escribo la cabecera de la tabla
@@ -99,8 +92,7 @@
          }
       echo "</TABLE>\n";
       }
-
-   // Funci髇 que lista las claves de una entrada
+   // Funci贸n que lista las claves de una entrada
    // de la agenda de amigos
    function listar_elemento( $amigo, $texto )
       {
@@ -117,5 +109,6 @@
          }
       echo "</TABLE>\n";
       }
-
 ?>
+
+Distintas funciones de la agenda de amigos
