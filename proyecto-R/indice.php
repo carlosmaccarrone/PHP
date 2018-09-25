@@ -2,7 +2,6 @@
 <html>
 <head>
 	<script>
-	
 	function bigImg(x){
 		x.style.fontSize  = "140%";
 	}
