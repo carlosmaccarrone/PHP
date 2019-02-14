@@ -1,0 +1,96 @@
+en mariadb Ctrl+L = clear screen
+
+como root:
+apt-get install mariadb-server -y
+mysql -u root -p
+Enter password:
+
+CREATE DATABASE Negocio;
+
+CREATE USER 'elPatron'@'localhost' IDENTIFIED BY '123456';
+CREATE USER 'empleado'@'localhost' IDENTIFIED BY 'relax';
+
+\\ ACCESO A TODAS LAS TABLAS DE TODAS LAS DATABASES
+GRANT ALL PRIVILEGES ON *.* TO 'elPatron'@'localhost';
+
+\\ ACCESO A TODAS LAS TABLAS DE TODAS LAS DATABASES Y CREAR/ELIMINAR USERS
+GRANT ALL PRIVILEGES ON *.* TO 'elPatron'@'localhost' IDENTIFIED BY '123456' WITH GRANT OPTION
+
+GRANT ALL PRIVILEGES ON Negocio.* TO 'empleado'@'localhost';
+GRANT SELECT, INSERT, DELETE ON Negocio.* TO 'empleado'@'localhost';
+
+\\ *.* = database.tabla, si quiere que el user pueda acceder desde 
+\\ una pc remota cambiara el 'localhost' por '%'.
+  
+SHOW GRANTS;
+SHOW GRANTS FOR 'empleado'@'localhost';
+SELECT CURRENT_TIMESTAMP;
+SELECT CURRENT_DATE;
+---------------------------------------------------------------------------------
+SHOW DATABASES;
+USE Negocio;
+SHOW TABLES;
+DESCRIBE Clientes;
+\\ LA RESTRICCIÓN CHECK SOLO FUNCIONA EN SQL SERVER
+CREATE TABLE Clientes (idCliente bigint NOT NULL UNSIGNED, Nombre varchar(50), 
+Documento int NOT NULL, Estado tinyint, Edad int, CHECK(Edad>=18));
+
+INSERT INTO Clientes (idCliente, Nombre, Documento, Estado, Edad) 
+VALUES (778, 'lococo', 222, 1, 3456);
+
+SELECT * FROM Clientes WHERE Edad = 3456;
+SELECT * FROM Clientes;
+UPDATE Clientes SET idCliente = 2525 , Nombre = 'hombreLobo'  WHERE Edad = 1923;
+DELETE FROM Clientes WHERE Edad = 3453;
+
+CREATE TABLE deFantasia (varcharToInt int, eliminar varchar(255));
+ALTER TABLE deFantasia ADD columnaCreada int;
+ALTER TABLE deFantasia DROP COLUMN eliminar;
+\\ MODIFY COLUMN VARIA EN SQL SERVER(ALTER COLUMN) Y ORACLE(MODIFY)
+ALTER TABLE deFantasia MODIFY COLUMN varcharToInt int;
+DROP TABLE deFantasia;
+
+\\ el autoincremental tiene que ser clave primaria
+CREATE TABLE Productos (idProducto int AUTO_INCREMENT PRIMARY KEY, 
+tipoDeProducto varchar(50) UNIQUE, Stock tinyint, Sector varchar(50));
+
+\\ solo se pueden crear por defecto con timestamp
+CREATE TABLE Facturacion (clienteID bigint, productoID int, 
+Fecha timestamp DEFAULT CURRENT_TIMESTAMP);
+
+CREATE TABLE Producto (tipoDeProducto varchar(50), peso int, codigo int);
+SELECT DATE(Fecha) FROM Facturacion; (Castear un timestamp en date)
+TRUNCATE Clientes;
+---------------------------------------------------------------------------------
+\\ LOS JOIN SE BASAN EN TEORÍA DE CONJUNTOS (INNER intersección)
+\\ (FULL OUTER JOIN union) (LEFT JOIN izquierda) (RIGHT JOIN derecha)
+
+\\ LEFT JOIN COMUN
+SELECT Clientes.Nombre, Facturacion.Fecha AS fechaDeEntrega FROM Clientes 
+LEFT JOIN Facturacion ON Clientes.Documento = Facturacion.clienteID;
+
+GROUP BY Facturacion.clienteID
+ORDER BY Clientes.Edad
+SELECT COUNT(Clientes.Nombre) AS contador
+
+\\ DOBLE LEFT JOIN
+SELECT Clientes.Nombre, Facturacion.Fecha AS fechaDeEntrega, Productos.tipoDeProducto 
+FROM Clientes LEFT JOIN Facturacion ON Clientes.Documento = Facturacion.clienteID 
+LEFT JOIN Productos ON Clientes.Estado = Productos.idProducto;
+---------------------------------------------------------------------------------
+\\ CREAR VISTA
+CREATE VIEW left_join_vista AS SELECT Clientes.Nombre, Facturacion.Fecha AS fechaDeEntrega 
+FROM Clientes LEFT JOIN Facturacion ON Clientes.Documento = Facturacion.clienteID;
+
+\\ VER COMO SE CREO UNA VISTA
+SHOW CREATE VIEW left_join_vista;
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
