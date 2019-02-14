@@ -63,7 +63,7 @@ SELECT DATE(Fecha) FROM Facturacion; (Castear un timestamp en date)
 TRUNCATE Clientes;
 ---------------------------------------------------------------------------------
 \\ LOS JOIN SE BASAN EN TEORÍA DE CONJUNTOS (INNER intersección)
-\\ (FULL OUTER JOIN union) (LEFT JOIN izquierda) (RIGHT JOIN derecha)
+\\ (FULL OUTER JOIN union) (LEFT JOIN prioridad izquierda) (RIGHT JOIN prioridad derecha)
 
 \\ LEFT JOIN COMUN
 SELECT Clientes.Nombre, Facturacion.Fecha AS fechaDeEntrega FROM Clientes 
