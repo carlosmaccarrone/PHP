@@ -85,12 +85,3 @@ FROM Clientes LEFT JOIN Facturacion ON Clientes.Documento = Facturacion.clienteI
 \\ VER COMO SE CREO UNA VISTA
 SHOW CREATE VIEW left_join_vista;
 ---------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
