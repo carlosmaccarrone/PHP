@@ -54,7 +54,7 @@ DROP TABLE deFantasia;
 CREATE TABLE Productos (idProducto int AUTO_INCREMENT PRIMARY KEY, 
 tipoDeProducto varchar(50) UNIQUE, Stock tinyint, Sector varchar(50));
 
-\\ solo se pueden crear por defecto con timestamp
+\\ solo se puede crear por defecto con current_timestamp y no current_date
 CREATE TABLE Facturacion (clienteID bigint, productoID int, 
 Fecha timestamp DEFAULT CURRENT_TIMESTAMP);
 
