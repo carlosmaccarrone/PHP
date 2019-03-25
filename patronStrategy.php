@@ -1,9 +1,11 @@
 <?php
 // El patron Strategy determina cómo se realiza el intercambio 
-// de mensajes entre diferentes objetos para resolver una tarea
+// de mensajes entre diferentes objetos para resolver una tarea,
+// a modo de reutilizar el código y que el cliente no almacene
+// algoritmos que no usará y mantenga una cohesión en el código.
 
 // Permite que el objeto cliente pueda elegir un algoritmo
-// que le convenga e intercambiarlo por otros dinámicamente
+// que le convenga e intercambiarlo por otros dinámicamente.
 
 class Strategy {
     public function __construct() {
@@ -61,5 +63,4 @@ class Boton {
 // La clase Strategy(cliente) instancia botones de la clase Boton
 // con la InterfazAritmetica y cada botón realiza una operación diferente.
 new Strategy;
-
 ?>
