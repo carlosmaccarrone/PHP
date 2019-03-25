@@ -2,8 +2,8 @@
 // El patron Strategy determina cómo se realiza el intercambio 
 // de mensajes entre diferentes objetos para resolver una tarea
 
-// Permite que el objeto cliente pueda elegir un 
-// algoritmo que le convenga e intercambiarlo dinámicamente 
+// Permite que el objeto cliente pueda elegir un algoritmo
+// que le convenga e intercambiarlo por otros dinámicamente
 
 class Strategy {
     public function __construct() {
