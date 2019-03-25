@@ -61,4 +61,5 @@ class Boton {
 // La clase Strategy(cliente) instancia botones de la clase Boton
 // con la InterfazAritmetica y cada botón realiza una operación diferente.
 new Strategy;
+
 ?>
