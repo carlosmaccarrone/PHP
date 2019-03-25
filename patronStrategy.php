@@ -1,7 +1,7 @@
 <?php
 // El patron Strategy determina cómo se realiza el intercambio 
 // de mensajes entre diferentes objetos para resolver una tarea,
-// a modo de reutilizar el código y que el cliente no almacene
+// a modo de reutilizar el código, que el cliente no almacene
 // algoritmos que no usará y mantenga una cohesión en el código.
 
 // Permite que el objeto cliente pueda elegir un algoritmo
