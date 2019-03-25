@@ -48,7 +48,7 @@ class Resta implements InterfazAritmetica {
 class Boton {
     var $objeto;
 
-    // Recibo una instancia de tipo InterfazStrategy
+    // Recibo una instancia de tipo InterfazAritmetica
     public function __construct(InterfazAritmetica $objeto_) {
         $this->objeto = $objeto_;
     }
