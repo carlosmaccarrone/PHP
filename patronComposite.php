@@ -42,8 +42,8 @@ class Cliente {
 		$nodo_1_1->agregar($nodo_1_1_1);
 		$nodo_1_1->agregar($hoja_1_1_2);
 
-		// getInformacion imprime los grados de los nodos y las hojas
-		// en el orden que se agregaron a su predecesor.
+		// getInformacion imprime el nombre del nodo/hoja y su grado 
+		// en el orden que se agregaron.
 		$root->getInformacion(1);
 	}
 }
@@ -68,10 +68,6 @@ class Nodo extends Arbol {
 
 	function Nodo(string $nombre_){
 		parent::Arbol($nombre_);
-	}
-
-	function __construct(){
-		parent::__construct(get_class($this->nombre));
 	}
 
 	function agregar(Arbol $hijo){
@@ -107,7 +103,7 @@ class Hoja extends Arbol {
 	}
 
 	function getInformacion(int $profundidad){
-		echo "-".$this->nombre."\n";
+		echo "-".$this->nombre." nivel ".$profundidad."\n";
 	}
 }
 
