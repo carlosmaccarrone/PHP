@@ -8,7 +8,7 @@
 // que le convenga e intercambiarlo por otros dinámicamente.
 
 class Strategy {
-    public function __construct() {
+    function __construct() {
         $contexto1 = new Boton(new Suma());
         $contexto1->correr();
 
@@ -23,25 +23,25 @@ class Strategy {
 // Las interfaces de objeto especifican que métodos deben ser implementados por
 // una clase, éstos deben ser publicos y no deben tener un contenido definido
 interface InterfazAritmetica {
-    public function ejecutar();
+    function ejecutar();
 }
 
 class Suma implements InterfazAritmetica {
-    public function ejecutar() {
+    function ejecutar() {
         echo "Método de ejecución Strategy A - Suma 6 + 4 = ";
         echo 6+4 ."\n";
     }
 }
 
 class Producto implements InterfazAritmetica {
-    public function ejecutar() {
+    function ejecutar() {
         echo "Método de ejecución Strategy B - Producto 6 * 4 = ";
         echo 6*4 ."\n";
     }
 }
 
 class Resta implements InterfazAritmetica {
-    public function ejecutar() {
+    function ejecutar() {
         echo "Método de ejecución Strategy C - Resta 6 - 4 = ";
         echo 6-4 ."\n";
     }
@@ -51,11 +51,11 @@ class Boton {
     var $objeto;
 
     // Recibo una instancia de tipo InterfazAritmetica
-    public function __construct(InterfazAritmetica $objeto_) {
+    function __construct(InterfazAritmetica $objeto_) {
         $this->objeto = $objeto_;
     }
 
-    public function correr() {
+    function correr() {
         $this->objeto->ejecutar();
     }
 }
