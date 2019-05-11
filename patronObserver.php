@@ -6,7 +6,7 @@
 // El objeto de datos(Sujeto), contiene atributos mediando los cuales cualquier objeto Oyente(observer)
 // puede suscribirse a él Sujeto pasándole una referencia del oyente mismo. El sujeto mantiene así una
 // lista de las referencias a sus observadores. Los observadores están obligados a implementar métodos
-// mediante el Sujeto es capaz de notificar a sus suscriptores los cambios que sufre.
+// mediante los cuales el Sujeto es capaz de notificar a sus suscriptores los cambios que sufre.
 
 // Ideal para la construccion de consistencia entre clases relacionadas, pero con independencia(bajo acoplamiento). 
 
