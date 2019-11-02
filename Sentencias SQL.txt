@@ -1,10 +1,11 @@
-en mariadb Ctrl+L = clear screen
+en linux Ctrl+L = clear screen
 
 como root:
 apt-get install mariadb-server -y
 mysql -u root -p
 Enter password:
 
+DROP DATABASE Negocio;
 CREATE DATABASE Negocio;
 
 CREATE USER 'elPatron'@'localhost' IDENTIFIED BY '123456';
@@ -21,7 +22,12 @@ GRANT SELECT, INSERT, DELETE ON Negocio.* TO 'empleado'@'localhost';
 
 \\ *.* = database.tabla, si quiere que el user pueda acceder desde 
 \\ una pc remota cambiara el 'localhost' por '%'.
-  
+
+Cambiar la clave de un user de la bd: 
+UPDATE mysql.user SET authentication_string = PASSWORD('123456qwerty') WHERE User = 'carlitos' AND Host = 'localhost';
+
+Borrar user: DROP USER 'username'@'localhost';
+
 SHOW GRANTS;
 SHOW GRANTS FOR 'empleado'@'localhost';
 SELECT CURRENT_TIMESTAMP;
@@ -58,7 +64,6 @@ tipoDeProducto varchar(50) UNIQUE, Stock tinyint, Sector varchar(50));
 CREATE TABLE Facturacion (clienteID bigint, productoID int, 
 Fecha timestamp DEFAULT CURRENT_TIMESTAMP);
 
-CREATE TABLE Producto (tipoDeProducto varchar(50), peso int, codigo int);
 SELECT DATE(Fecha) FROM Facturacion; (Castear un timestamp en date)
 TRUNCATE Clientes;
 ---------------------------------------------------------------------------------
@@ -85,3 +90,21 @@ FROM Clientes LEFT JOIN Facturacion ON Clientes.Documento = Facturacion.clienteI
 \\ VER COMO SE CREO UNA VISTA
 SHOW CREATE VIEW left_join_vista;
 ---------------------------------------------------------------------------------
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+AGREGADO 02/11/19
+	| 	| 	|
+	V 	V 	V
+
+Si por ejemplo el idProducto de la tabla Productos no es autoincremental (foráneo) puedo seleccionar el máximo id y sumarle uno:
+INSERT INTO Productos (idProducto, tipoDeProducto, Stock, Sector) SELECT MAX(idProducto)+1, 'galletitas', 1, 'comestibles' FROM Productos;
+
+Un select * de Clientes con orden por Nombre (#-A-Z):
+SELECT * FROM Clientes WHERE Edad = 3456 ORDER BY Nombre ASC;
+
+Un select * de Clientes con orden por Nombre (Z-A-#):
+SELECT * FROM Clientes WHERE Edad = 3456 ORDER BY Nombre DESC;
+
+Un select de Productos agrupados por tipoDeProducto y con la cantidad del mismo:
+SELECT tipoDeProducto, COUNT(*) AS cantidadDelTipo FROM Productos GROUP BY tipoDeProducto;
